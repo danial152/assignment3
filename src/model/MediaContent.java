@@ -1,4 +1,5 @@
 package model;
+import java.time.Year;
 
 public abstract class MediaContent implements Displayable {
     protected int media_id;
@@ -32,6 +33,13 @@ public abstract class MediaContent implements Displayable {
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
+
+    //method
+    public void releasedAgo() {
+        int year = Year.now().getValue();
+        System.out.println(year - this.releaseYear);
+    }
+
 
     // abstract methods
     public abstract void displayInfo();
