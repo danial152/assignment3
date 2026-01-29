@@ -23,13 +23,14 @@ Composition - usage of repositories.
   
 Polymorphism examples:  
   
-List<Displayable> media = new ArrayList<>();  
-  
-media.add(movie);  
-  
-media.add(series); 
-  
-media.add(episode) 
+List<Displayable> mediaList = new ArrayList<>();
+
+        mediaList.addAll(movieRepo.getAll());
+        
+        mediaList.addAll(seriesRepo.getAll());
+        
+        
+        mediaList.addAll(episodeRepo.getAll());
   
 for (Displayable item : media) {  
   
