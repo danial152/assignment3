@@ -136,11 +136,13 @@ public class EpisodeRepository {
         Connection c = null;
         try {
             c = db.getConnection();
+            PreparedStatement ps1 = c.prepareStatement("DELETE FROM episodes WHERE episode_id=?");
+            ps1.setInt(1, id);
+            ps1.executeUpdate();
 
-            PreparedStatement ps = c.prepareStatement(
-                    "DELETE FROM media_content WHERE media_id=(SELECT media_id FROM episodes WHERE episode_id=?)");
-            ps.setInt(1, id);
-            ps.executeUpdate();
+            PreparedStatement ps2 = c.prepareStatement("DELETE FROM media_content WHERE media_id=(SELECT media_id FROM episodes WHERE episode_id=?)");
+            ps2.setInt(1, id);
+            ps2.executeUpdate();
 
             c.close();
         } catch (SQLException ex) {
